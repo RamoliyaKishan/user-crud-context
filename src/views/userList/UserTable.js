@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router";
 import {
 	Container,
 	Paper,
@@ -13,12 +13,12 @@ import {
 	Box,
 	Button,
 	TablePagination,
-} from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import { toast } from 'react-toastify';
-import { userTableStyle } from './style';
-import { UsersContext } from '../../context/UsersContext';
+} from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import { toast } from "react-toastify";
+import { userTableStyle } from "./style";
+import { UsersContext } from "../../context/UsersContext";
 
 const UserTable = () => {
 	const classes = userTableStyle();
@@ -31,7 +31,7 @@ const UserTable = () => {
 	const handleDelete = (id) => {
 		if (window.confirm(`Are you sure to delete user ${id} ???`)) {
 			setUsersList(usersList.filter((u) => u.id !== id));
-			toast.success('User Deleted successfully...');
+			toast.success("User Deleted successfully...");
 		}
 	};
 	const handleChangePage = (event, newPage) => {
@@ -45,8 +45,8 @@ const UserTable = () => {
 	return (
 		<Container className={classes.root} disableGutters>
 			{/* <Loader loading={loadingFetchUsers || loadingDeleteUser} /> */}
-			<Paper component={Box} width='30%' mx='auto'>
-				<Typography variant='h3' align='center' color='primary'>
+			<Paper component={Box} width="30%" mx="auto">
+				<Typography variant="h3" align="center" color="primary">
 					User's List
 				</Typography>
 			</Paper>
@@ -72,22 +72,22 @@ const UserTable = () => {
 										return (
 											<TableRow key={index}>
 												<TableCell>{index + 1}</TableCell>
-												<TableCell>{user?.name || '-'}</TableCell>
-												<TableCell>{user?.email || '-'}</TableCell>
-												<TableCell>{user?.contact || '-'}</TableCell>
+												<TableCell>{user?.name || "-"}</TableCell>
+												<TableCell>{user?.email || "-"}</TableCell>
+												<TableCell>{user?.contact || "-"}</TableCell>
 												<TableCell>
 													<Button
-														className='edit-btn'
+														className="edit-btn"
 														startIcon={<EditIcon />}
-														size='large'
+														size="large"
 														onClick={() => history.push(`/addUser/${user.id}`)}
 													>
 														Edit
 													</Button>
 													<Button
 														startIcon={<DeleteIcon />}
-														className='delete-btn'
-														size='large'
+														className="delete-btn"
+														size="large"
 														onClick={() => handleDelete(user.id)}
 													>
 														Delete
@@ -97,7 +97,7 @@ const UserTable = () => {
 										);
 									})
 							) : (
-								<TableRow className='no-data'>
+								<TableRow className="no-data">
 									<TableCell colSpan={7}>
 										<span>No Data Found</span>
 									</TableCell>
@@ -107,9 +107,9 @@ const UserTable = () => {
 					</Table>
 				</TableContainer>
 				{usersList.length > 0 && (
-					<div className='pagination-wrapper'>
+					<div className="pagination-wrapper">
 						<TablePagination
-							component='div'
+							component="div"
 							count={usersList?.length ? usersList?.length : 100}
 							page={page}
 							onPageChange={handleChangePage}
